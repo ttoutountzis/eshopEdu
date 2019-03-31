@@ -12,7 +12,9 @@ namespace Eshop.Api.Interface
 
         User InsertUser(User user);
 
-       
+        User Update(User user);
+
+        List<User> GetAll();
 
         bool DeleteUser(string id);
 

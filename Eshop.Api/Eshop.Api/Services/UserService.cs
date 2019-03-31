@@ -29,6 +29,11 @@ namespace Eshop.Api.Services
             return true;
         }
 
+        public List<User> GetAll()
+        {
+            return _ctx.Users.ToList();
+        }
+
         public User GetUser(string id)
         {
 
@@ -45,6 +50,19 @@ namespace Eshop.Api.Services
             return user;
         }
 
-        
+        public User Update(User user)
+        {
+            var result = _ctx.Users.SingleOrDefault(u => u.Id.Equals(user.Id));
+            try
+            {
+                _ctx.Entry(result).CurrentValues.SetValues(user);
+                _ctx.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            return user;
+        }
     }
 }

@@ -41,5 +41,28 @@ namespace Eshop.Api.Services
             return productitem;
 
         }
+
+        public List<ProductItem> GetAll()
+        {
+            return _ctx.Products.ToList();
+        }
+
+        public ProductItem Update(ProductItem productItem)
+        {
+            var result = _ctx.Products.SingleOrDefault(u => u.Id.Equals(productItem.Id));
+            try
+            {
+                _ctx.Entry(result).CurrentValues.SetValues(productItem);
+                _ctx.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return productItem;
+
+        }
+       
     }
 }

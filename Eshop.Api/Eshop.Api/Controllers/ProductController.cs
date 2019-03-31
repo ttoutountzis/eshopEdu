@@ -24,7 +24,7 @@ namespace Eshop.Api.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok();
+            return Ok(_srv.GetAll());
         }
 
         // GET api/product/5
@@ -55,16 +55,19 @@ namespace Eshop.Api.Controllers
                 var result = _srv.InsertProductItem(item);
                 return Ok(item);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return BadRequest("Something went wrong");
             }
         }
         // PUT api/product/5
         [HttpPut("{id}")]
-        public IActionResult Put(string id, [FromBody] ProductItem item)
+        public IActionResult Put([FromBody] ProductItem productItem)
         {
-            return Ok();
+            if (productItem == null) return BadRequest("Error Mate");
+            var updatedProductItem = _srv.Update(productItem);
+            if (updatedProductItem == null) return BadRequest("Better Go fishing");
+            return new ObjectResult(_srv.Update(productItem));
         }
 
         // DELETE api/values/5
