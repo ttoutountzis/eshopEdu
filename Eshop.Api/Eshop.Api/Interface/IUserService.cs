@@ -12,6 +12,8 @@ namespace Eshop.Api.Interface
 
         User InsertUser(User user);
 
+       
+
         bool DeleteUser(string id);
 
     }

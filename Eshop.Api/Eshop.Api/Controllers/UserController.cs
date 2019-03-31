@@ -46,7 +46,7 @@ namespace Eshop.Api.Controllers
 
                 return Ok(result);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return BadRequest("Something went Wrong");
             }
@@ -61,7 +61,7 @@ namespace Eshop.Api.Controllers
                 var result = _srv.InsertUser(user);
                 return Ok(user);
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return BadRequest("Something went Wrong");
             }

@@ -35,6 +35,7 @@ namespace Eshop.Api.Services
             return new User();
         }
 
+       
         public User InsertUser(User user)
         {
             user.IsActive = true;
@@ -43,5 +44,7 @@ namespace Eshop.Api.Services
             _ctx.SaveChanges();
             return user;
         }
+
+        
     }
 }
